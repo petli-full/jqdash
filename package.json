@@ -1,0 +1,30 @@
+{
+  "name": "jqdash",
+  "version": "1.0.0",
+  "description": "A porting of jq to javascript using WebAssembly.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha --reporter list",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/petli-full/jqdash.git"
+  },
+  "keywords": [
+    "jq",
+    "json",
+    "query"
+  ],
+  "author": "petli-full",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/petli-full/jqdash/issues"
+  },
+  "homepage": "https://github.com/petli-full/jqdash#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^7.1.2"
+  },
+  "dependencies": {}
+}
