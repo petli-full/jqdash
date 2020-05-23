@@ -1,6 +1,6 @@
 {
   "name": "jqdash",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A porting of jq to javascript using WebAssembly.",
   "main": "dist/main.js",
   "scripts": {

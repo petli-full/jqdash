@@ -9,24 +9,35 @@ npm install jqdash --save
 ```
 
 ### usage
-The package exposes the [Module](https://emscripten.org/docs/api_reference/module.html) object of emscripten API. A `jq` method is added to it, and expected to be the only method user will ever need to use.
+The package exposes a function that asynchronously load the [Module](https://emscripten.org/docs/api_reference/module.html) object of emscripten API. After loaded, a `jq` method is added to it, and expected to be the only method user will ever need to use.
 ```
-function jq(input: string, query: string, options: string[] | null): Promise<string>;
+function jq(input: string, query: string, options: string[] | null): {stdout: string, stderr: string};
 ```
-A Promise is returned because the lib loads the `wasm` file asynchronously. After that, the Promise is resolved immediately.
 
 ### examples
 ```
-import { jq } from 'jqdash';
+import jqdash from 'jqdash';
 
 // jq --version
-jq('', '', ['--version']).then(result => {});
+jqdash().then((module: any) => {
+    const { jq } = module;
+    result = jq('', '', ['--version']);
+    console.log(result.stdout);
+});
 
 // jq -n now
-jq('', 'now', ['-n']).then(result => {});
+jqdash().then((module: any) => {
+    const { jq } = module;
+    result = jq('', 'now', ['-n']);
+    console.log(result.stdout);
+});
 
 // echo '{"name":"test"}' | jq .name
-jq('{"name":"test"}', '.name').then(result => {});
+jqdash().then((module: any) => {
+    const { jq } = module;
+    result = jq('{"name":"test"}', '.name');
+    console.log(result.stdout);
+});
 ```
 
 ### jq version
