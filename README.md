@@ -38,6 +38,15 @@ jqdash().then((module: any) => {
     result = jq('{"name":"test"}', '.name');
     console.log(result.stdout);
 });
+
+// load by require
+const jqdash = require('jqdash').default;
+
+jqdash.then((module) => {
+    const jq = module.jq;
+    const jqoutput = jq('null', 'now', ['-M']).stdout;
+    ......
+}
 ```
 
 ### jq version
